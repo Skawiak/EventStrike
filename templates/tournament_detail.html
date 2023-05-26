@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tournament Detail</title>
+</head>
+<body>
+    <h1>Tournament Detail</h1>
+    <h2>{{ tournament.name }}</h2>
+    <p>Location: {{ tournament.location }}</p>
+    <p>Date: {{ tournament.date }}</p>
+    <p>Teams:</p>
+    <ul>
+    {% for team in tournament.teams.all %}
+        <li>{{ team.name }}</li>
+    {% empty %}
+        <li>No teams registered</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
