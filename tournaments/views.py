@@ -34,6 +34,7 @@ def tournament_detail(request, tournament_id):
     tournament = get_object_or_404(Tournament, id=tournament_id)
     return render(request, 'tournament_detail.html', {'tournament': tournament})
 
+
 @login_required
 def add_match_result(request, match_id):
     match = get_object_or_404(Match, id=match_id)
@@ -41,7 +42,7 @@ def add_match_result(request, match_id):
     if request.method == 'POST':
         form = MatchResultForm(request.POST)
         if form.is_valid():
-            winner = form.cleand_data['winner']
+            winner = form.cleaned_data['winner']
             match.winner = winner
             match.save()
 
@@ -51,6 +52,7 @@ def add_match_result(request, match_id):
 
     return render(request, 'add_match_result.html', {'match': match, 'form': form})
 
+
 @login_required
-def dashboard(request): # tylko zalogowani
+def dashboard(request):  # tylko zalogowani
     return render(request, 'dashboard.html')
